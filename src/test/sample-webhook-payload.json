@@ -1,0 +1,20 @@
+{
+  "object": "instagram",
+  "entry": [
+    {
+      "id": "1234567890",
+      "time": 1698888888,
+      "messaging": [
+        {
+          "sender": { "id": "user_abc123" },
+          "recipient": { "id": "page_xyz456" },
+          "timestamp": 1698888888,
+          "message": {
+            "mid": "mid.987654321",
+            "text": "Hi! I'm interested."
+          }
+        }
+      ]
+    }
+  ]
+}
