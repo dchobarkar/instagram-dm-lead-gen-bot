@@ -2,7 +2,11 @@
   "name": "instagram-dm-lead-gen-bot",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/server.js",
+  "type": "module",
+  "engines": {
+  "node": ">=18.0.0"
+},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "ts-node-dev src/server.ts",
