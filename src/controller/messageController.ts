@@ -6,6 +6,7 @@ import {
   showTyping,
 } from "../services/instagramService";
 import { getSession, clearSession } from "../sessionStore";
+import { storeLead } from "../services/supabaseService";
 
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -76,7 +77,21 @@ export const handleMessage = async (req: Request, res: Response) => {
               senderId,
               "Awesome! Thanks for sharing. We'll be in touch soon. 🚀"
             );
-            console.log("📝 Captured lead:", session.data);
+
+            // Ensure all fields are present before storing the lead
+            if (
+              typeof session.data.name === "string" &&
+              typeof session.data.email === "string" &&
+              typeof session.data.interest === "string"
+            ) {
+              await storeLead({
+                name: session.data.name,
+                email: session.data.email,
+                interest: session.data.interest,
+              }); // Save lead to Supabase
+            } else {
+              console.error("❌ Missing lead data fields:", session.data);
+            }
             clearSession(senderId);
             break;
         }
